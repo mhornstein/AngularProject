@@ -1,0 +1,23 @@
+Creates a new Angular project:
+ng new conFusion --style=scss
+
+Run the project:
+ng serve
+
+Install componnts for angular:
+npm install @angular/material@6.4.7 --save
+
+Install cdk:
+>npm install @angular/cdk@6.4.7 --save
+
+instakk animation support
+npm install @angular/animations@6.1.7 --save
+
+Gestures in our js app:
+npm install hammerjs@2.0.8 --save
+
+flex:
+npm install --save @angular/flex-layout@6.0.0-beta.18
+
+Generate a component:
+ng generate component menu
