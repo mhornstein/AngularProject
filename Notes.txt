@@ -21,3 +21,6 @@ npm install --save @angular/flex-layout@6.0.0-beta.18
 
 Generate a component:
 ng generate component menu
+
+Generate a service:
+ng generate service services/dish
