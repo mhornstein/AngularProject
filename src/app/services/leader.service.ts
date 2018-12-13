@@ -10,10 +10,14 @@ export class LeaderService {
   constructor() { }
 
   getLeaders(): Promise<Leader[]> {
-    return Promise.resolve(LEADERS);
+    return new Promise(resolve => 
+      // simulate server delay
+      {setTimeout(() => resolve(LEADERS), 2000);});
   }
 
   getCorporateLeader(): Promise<Leader>{
-    return Promise.resolve(LEADERS[3]);
+    return new Promise(resolve => 
+      // simulate server delay
+      {setTimeout(() => resolve(LEADERS[3]), 2000);});
   }
 }
