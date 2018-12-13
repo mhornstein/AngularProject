@@ -26,7 +26,7 @@ Generate a service:
 ng generate service services/dish
 
 installing font-awesome:
-npm install font-aweseome@4.7.0 --save
+npm install font-awesome@4.7.0 --save
 
 Add header (footer):
 ng g component header (footer)

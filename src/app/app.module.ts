@@ -2,17 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatListModule} from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AppComponent } from './app.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MatFormFieldModule} from '@angular/material/form-field';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule, MatCheckbox} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule} from '@angular/material/form-field';
+
 
 import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
@@ -46,7 +51,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule,
+
     AppRoutingModule,
     MatToolbarModule,
     MatListModule,
@@ -55,8 +60,12 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [
     DishService,
