@@ -44,6 +44,8 @@ export class DishdetailComponent implements OnInit {
   constructor( private dishService: DishService,
     private location: Location, private route: ActivatedRoute, private fb: FormBuilder) {
       this.createForm();
+      this.commentForm.valueChanges.subscribe(data => this.onValueChanged(data));
+      this.onValueChanged(); // (re)set form validation messages
     }
 
   ngOnInit() {
@@ -62,6 +64,27 @@ export class DishdetailComponent implements OnInit {
       author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
     });
   }
+
+  onValueChanged(data?: any) {
+    if (!this.commentForm) { return; }
+    const form = this.commentForm;
+    for (const field in this.formErrors) {
+      if (this.formErrors.hasOwnProperty(field)) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            if (control.errors.hasOwnProperty(key)) {
+              this.formErrors[field] += messages[key] + ' ';
+            }
+          }
+        }
+      }
+    }
+  }
+
 
   onSubmit() {
 
