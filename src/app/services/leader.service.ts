@@ -15,7 +15,7 @@ export class LeaderService {
     return of(LEADERS).pipe(delay(2000));
   }
 
-  getCorporateLeader(): Observable<Leader>{
+  getCorporateLeader(): Observable<Leader> {
     return of(LEADERS[3]).pipe(delay(2000));
   }
 }

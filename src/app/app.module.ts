@@ -52,7 +52,6 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-
     AppRoutingModule,
     MatToolbarModule,
     MatListModule,
