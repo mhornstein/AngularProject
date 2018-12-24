@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSliderModule} from '@angular/material/slider';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule, MatCheckbox} from '@angular/material/checkbox';
@@ -66,7 +67,8 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   providers: [
     DishService,
