@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { digest } from '@angular/compiler/src/i18n/serializers/xmb';
 import { Dish } from '../shared/dish';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -18,7 +18,7 @@ import { DishService } from '../services/dish.service';
 export class DishdetailComponent implements OnInit {
   dish: Dish;
   commentForm: FormGroup;
-  comment: Comment;
+  @ViewChild('fform') commentFormDirective;
 
   formErrors = {
     'author': '',
@@ -87,6 +87,15 @@ export class DishdetailComponent implements OnInit {
 
 
   onSubmit() {
-
+    const comment = this.commentForm.value;
+    comment['date'] = new Date(Date.now()).toISOString();
+    console.log(comment);
+    this.commentForm.reset({
+      author: '',
+      comment: '',
+      rating: 5
+    });
+    this.commentFormDirective.resetForm();
+    this.dish.comments.push(comment);
   }
 }
