@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, Inject} from '@angular/core';
 import { digest } from '@angular/compiler/src/i18n/serializers/xmb';
 import { Dish } from '../shared/dish';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -19,6 +19,7 @@ export class DishdetailComponent implements OnInit {
   dish: Dish;
   commentForm: FormGroup;
   @ViewChild('fform') commentFormDirective;
+  errMess: string;
 
   formErrors = {
     'author': '',
@@ -42,7 +43,8 @@ export class DishdetailComponent implements OnInit {
   };
 
   constructor( private dishService: DishService,
-    private location: Location, private route: ActivatedRoute, private fb: FormBuilder) {
+    private location: Location, private route: ActivatedRoute, private fb: FormBuilder,
+    @Inject('BaseURL') public BaseURL) {
       this.createForm();
       this.commentForm.valueChanges.subscribe(data => this.onValueChanged(data));
       this.onValueChanged(); // (re)set form validation messages
@@ -50,7 +52,8 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.dishService.getDish(id).subscribe(dish => this.dish = dish);
+    this.dishService.getDish(id).subscribe(dish => this.dish = dish,
+      errmes => this.errMess = <any>errmes);
   }
 
   goBack(): void {
