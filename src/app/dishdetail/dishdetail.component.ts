@@ -17,6 +17,7 @@ import { DishService } from '../services/dish.service';
 
 export class DishdetailComponent implements OnInit {
   dish: Dish;
+  dishCopy: Dish;
   commentForm: FormGroup;
   @ViewChild('fform') commentFormDirective;
   errMess: string;
@@ -52,8 +53,8 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.dishService.getDish(id).subscribe(dish => this.dish = dish,
-      errmes => this.errMess = <any>errmes);
+    this.dishService.getDish(id).subscribe(dish => {this.dish = dish;
+      this.dishCopy = dish; }, errmes => this.errMess = <any>errmes);
   }
 
   goBack(): void {
@@ -99,6 +100,10 @@ export class DishdetailComponent implements OnInit {
       rating: 5
     });
     this.commentFormDirective.resetForm();
-    this.dish.comments.push(comment);
+    this.dishCopy.comments.push(comment);
+    this.dishService.putDish(this.dishCopy)
+      .subscribe(dish => {
+        this.dish = dish; this.dishCopy = dish; },
+        errmess => {this.dish  = null; this.dishCopy = null; this.errMess = <any>errmess; } );
   }
 }
