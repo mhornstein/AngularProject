@@ -11,7 +11,7 @@
 
   <div fxFlex *ngIf = "dishes">
       <mat-grid-list cols="2" rowHeight="200px">
-          <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
+          <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight>
           <img height="200px" src="{{BaseURL + dish.image}}" alt={{dish.name}}>
           <mat-grid-tile-footer>
             <h1>{{dish.name | uppercase}}</h1>
@@ -28,45 +28,4 @@
       <h2>Error</h2>
       <h4>{{errMess}}</h4>
     </div>
-    <!-- Ver #3 -->
-    <!--
-    <app-dishdetail [dish] = "selectedDish"></app-dishdetail>
-    -->
-
-    <!--Ver #2-->
-    <!--
-    <div fxFlex *ngIf="selectedDish">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>
-              <h3>{{selectedDish.name | uppercase}}</h3>
-            </mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src={{selectedDish.image}} alt={{selectedDish.name}}>
-          <mat-card-content>
-            <p>{{selectedDish.description}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-  -->
-  <!--Ver #1-->
-  <!--
-    Old option:
-    <mat-list-item *ngFor="let dish of dishes">
-      <img matListAvatar src = {{dish.image}} alt = {{dish.name}}>
-      <h1 matLine> {{dish.name}} </h1>
-      <p matLine>
-        <span> {{dish.description}} </span>
-      </p>
-
-
-    </mat-list-item>
-  </mat-list>
-    -->
-
 </div>
